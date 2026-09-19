@@ -1,0 +1,17 @@
+{
+  "name": "narravit",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.ts",
+    "test:agent": "node scripts/run-agent-eval.ts",
+    "test:agent:mutating": "node scripts/run-agent-eval.ts --mutate initializes-empty-folder-after-confirmation",
+    "test:agent:session-prep": "node scripts/run-session-prep-agent-eval.ts",
+    "check": "biome check .",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "@types/node": "^26.6.1"
+  }
+}

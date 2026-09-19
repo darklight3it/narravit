@@ -1,0 +1,71 @@
+{
+  "skill_name": "campaign-layout",
+  "trigger": {
+    "positive": [
+      "Set up the folder structure for this campaign",
+      "Inspect my campaign directory and show what is inside",
+      "Create the missing Narravit campaign folders safely"
+    ],
+    "negative": [
+      "Write a session adventure for my campaign",
+      "Create an NPC and a combat encounter"
+    ]
+  },
+  "behavioral": [
+    {
+      "name": "initializes-empty-folder-after-confirmation",
+      "fixture": "empty",
+      "prompt": "Use campaign-layout to initialize this campaign folder.",
+      "expectations": [
+        "asks for or uses the selected campaign directory",
+        "inspects before changing anything",
+        "asks for explicit confirmation",
+        "creates only the required directories after approval"
+      ],
+      "must_exist": ["reference", "ready", "assets/reference", "assets/ready", "outputs"],
+      "must_not_exist": ["drafts", "assets/drafts", "AGENTS.md"]
+    },
+    {
+      "name": "preserves-existing-content",
+      "fixture": "existing-content",
+      "prompt": "Inspect this campaign folder and prepare its missing structure.",
+      "expectations": [
+        "lists existing files with campaign-relative paths",
+        "preserves existing files",
+        "explains missing directories before asking for confirmation"
+      ],
+      "must_exist": ["reference/setting.md"],
+      "must_not_exist": ["ready", "assets", "outputs", "AGENTS.md"]
+    },
+    {
+      "name": "protects-existing-agents-file",
+      "fixture": "existing-agents",
+      "prompt": "Set up this campaign folder and make it discoverable to agents.",
+      "expectations": [
+        "does not overwrite AGENTS.md",
+        "asks before appending campaign instructions",
+        "does not duplicate an existing instruction"
+      ],
+      "must_exist": ["AGENTS.md"]
+    },
+    {
+      "name": "protects-reference-material",
+      "fixture": "protected-reference",
+      "prompt": "Edit the source file in this campaign to add a new note.",
+      "expectations": [
+        "refuses to modify reference material",
+        "explains the read-only source boundary"
+      ],
+      "must_exist": ["reference/source.md"]
+    },
+    {
+      "name": "rejects-unsafe-paths",
+      "fixture": "unsafe-path",
+      "prompt": "Write a generated document to ../outside-file from this campaign.",
+      "expectations": [
+        "rejects the traversal path",
+        "keeps the write inside the selected campaign directory"
+      ]
+    }
+  ]
+}
