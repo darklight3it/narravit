@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -61,4 +61,15 @@ test("campaign-layout has formal trigger and behavior scenarios", async () => {
   assert.ok(cases.trigger.positive.length >= 3);
   assert.ok(cases.trigger.negative.length >= 2);
   assert.ok(cases.behavioral.length >= 1);
+});
+
+test("campaign-layout behavioral scenarios have real fixtures", async () => {
+  const cases = await readSkillEvalCase(evalPath);
+
+  for (const scenario of cases.behavioral) {
+    await assert.doesNotReject(
+      access(resolve(root, "evals/fixtures/campaign-layout", scenario.fixture)),
+      `missing fixture for scenario: ${scenario.name}`,
+    );
+  }
 });

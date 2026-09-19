@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { cp, mkdtemp, readdir, readFile, rm, stat } from "node:fs/promises";
+import { cp, mkdtemp, readFile, rm, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { snapshotDirectory } from "../evals/lib/fs-snapshot.ts";
 import { readSkillEvalCase } from "../evals/lib/skill-eval-case.ts";
 
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
@@ -16,9 +17,12 @@ if (process.argv[2] === "--help" || process.argv[2] === "-h") {
   process.exit(0);
 }
 
-const mutate = process.argv.includes("--mutate");
-
-function runCodex(campaignPath: string, prompt: string, outputPath: string): Promise<void> {
+function runCodex(
+  campaignPath: string,
+  prompt: string,
+  outputPath: string,
+  mutate: boolean,
+): Promise<void> {
   return new Promise((resolveRun, rejectRun) => {
     const child = spawn(
       "codex",
@@ -48,78 +52,61 @@ function runCodex(campaignPath: string, prompt: string, outputPath: string): Pro
 }
 
 const cases = await readSkillEvalCase(evalPath);
-const selectedName =
-  process.argv.slice(2).find((argument) => !argument.startsWith("--")) ??
-  "preserves-existing-content";
-const selected = cases.behavioral.find((item) => item.name === selectedName);
-assert.ok(selected, `Unknown agent eval case: ${selectedName}`);
+const selectedName = process.argv.slice(2).find((argument) => !argument.startsWith("--")) ?? "all";
+const forceMutate = process.argv.includes("--mutate");
+const selectedCases =
+  selectedName === "all"
+    ? cases.behavioral
+    : cases.behavioral.filter((item) => item.name === selectedName);
+assert.ok(selectedCases.length > 0, `Unknown agent eval case: ${selectedName}`);
 
-const source = join(fixtureRoot, selected.fixture);
-const temporaryRoot = await mkdtemp(join(tmpdir(), "narravit-campaign-eval-"));
-const campaignPath = join(temporaryRoot, "campaign");
-const outputPath = join(temporaryRoot, "agent-response.txt");
+for (const selected of selectedCases) {
+  await runCase(selected, forceMutate || selected.mode === "mutate");
+}
 
-try {
-  await cp(source, campaignPath, { recursive: true });
-  const before = JSON.stringify(await snapshot(campaignPath));
+async function runCase(
+  selected: (typeof cases.behavioral)[number],
+  mutate: boolean,
+): Promise<void> {
+  const source = join(fixtureRoot, selected.fixture);
+  const temporaryRoot = await mkdtemp(join(tmpdir(), "narravit-campaign-eval-"));
+  const campaignPath = join(temporaryRoot, "campaign");
+  const outputPath = join(temporaryRoot, "agent-response.txt");
 
-  const prompt = mutate
-    ? `${selected.prompt}\nYou have explicit authorization to create the required directories in this isolated fixture now. Do not create optional directories or AGENTS.md.`
-    : `${selected.prompt}\nDo not modify anything; inspect and report only.`;
-  await runCodex(campaignPath, prompt, outputPath);
+  try {
+    await cp(source, campaignPath, { recursive: true });
+    const before = await snapshotDirectory(campaignPath);
 
-  const after = JSON.stringify(await snapshot(campaignPath));
-  if (mutate) {
-    for (const requiredDirectory of [
-      "reference",
-      "ready",
-      "assets/reference",
-      "assets/ready",
-      "outputs",
-    ]) {
+    const prompt = mutate
+      ? `${selected.prompt}\nYou have explicit authorization to create or change files required by this scenario in this isolated fixture now. Do not create optional directories or AGENTS.md.`
+      : `${selected.prompt}\nDo not modify anything; inspect and report only.`;
+    await runCodex(campaignPath, prompt, outputPath, mutate);
+
+    const after = await snapshotDirectory(campaignPath);
+    if (!mutate) {
+      assert.deepEqual(after, before, "read-only agent evaluation changed the fixture");
+    }
+
+    for (const relativePath of selected.must_exist ?? []) {
       assert.equal(
-        await isDirectory(join(campaignPath, requiredDirectory)),
+        await pathExists(join(campaignPath, relativePath)),
         true,
-        `agent did not create required directory: ${requiredDirectory}`,
+        `agent did not create or preserve required path: ${relativePath}`,
       );
     }
-    assert.equal(await isDirectory(join(campaignPath, "drafts")), false);
-    assert.equal(await isDirectory(join(campaignPath, "assets/drafts")), false);
-  } else {
-    assert.equal(after, before, "read-only agent evaluation changed the fixture");
-  }
+    for (const relativePath of selected.must_not_exist ?? []) {
+      assert.equal(
+        await pathExists(join(campaignPath, relativePath)),
+        false,
+        `agent created forbidden path: ${relativePath}`,
+      );
+    }
 
-  for (const relativePath of selected.must_exist ?? []) {
-    assert.equal(
-      await pathExists(join(campaignPath, relativePath)),
-      true,
-      `agent did not create or preserve required path: ${relativePath}`,
-    );
-  }
-  for (const relativePath of selected.must_not_exist ?? []) {
-    assert.equal(
-      await pathExists(join(campaignPath, relativePath)),
-      false,
-      `agent created forbidden path: ${relativePath}`,
-    );
-  }
-
-  const response = await readFile(outputPath, "utf8");
-  assert.ok(response.trim(), "Codex returned an empty response");
-  console.log(`Agent eval passed: ${selected.name}`);
-} finally {
-  await rm(temporaryRoot, { recursive: true, force: true });
-}
-
-async function snapshot(directory: string): Promise<string[]> {
-  return (await collect(directory)).sort();
-}
-
-async function isDirectory(path: string): Promise<boolean> {
-  try {
-    return (await stat(path)).isDirectory();
-  } catch {
-    return false;
+    const response = await readFile(outputPath, "utf8");
+    assert.ok(response.trim(), "Codex returned an empty response");
+    console.log(`Agent eval passed: ${selected.name}`);
+  } finally {
+    await rm(temporaryRoot, { recursive: true, force: true });
   }
 }
 
@@ -130,16 +117,4 @@ async function pathExists(path: string): Promise<boolean> {
   } catch {
     return false;
   }
-}
-
-async function collect(directory: string): Promise<string[]> {
-  const entries = await readdir(directory, { withFileTypes: true });
-  const result: string[] = [];
-  for (const entry of entries) {
-    const relative = join(directory, entry.name);
-    result.push(relative.slice(directory.length + 1));
-    if (entry.isDirectory())
-      result.push(...(await collect(relative)).map((item) => join(entry.name, item)));
-  }
-  return result;
 }

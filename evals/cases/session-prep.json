@@ -1,0 +1,30 @@
+{
+  "skill_name": "session-prep",
+  "trigger": {
+    "positive": [
+      "Prepare a tabletop session from these campaign notes",
+      "Turn this session idea into a reviewable GM plan",
+      "Create a draft session outline using the supplied references"
+    ],
+    "negative": [
+      "Create the campaign folder structure",
+      "Edit the original campaign reference file"
+    ]
+  },
+  "behavioral": [
+    {
+      "name": "creates-grounded-session-draft",
+      "fixture": "basic-session",
+      "prompt": "Read request.md and the supplied reference files. Prepare the requested session plan and save it as drafts/session-prep.md.",
+      "expectations": [
+        "uses the supplied reference material",
+        "distinguishes facts from proposals",
+        "includes all eight preparation sections",
+        "defines characters, a strong start, and secrets or clues",
+        "writes a readable Markdown draft",
+        "includes a GM review checklist"
+      ],
+      "must_exist": ["drafts/session-prep.md"]
+    }
+  ]
+}

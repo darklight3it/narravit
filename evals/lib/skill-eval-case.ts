@@ -5,6 +5,7 @@ export interface SkillEvalBehavior {
   fixture: string;
   prompt: string;
   expectations: string[];
+  mode?: "read-only" | "mutate";
   must_exist?: string[];
   must_not_exist?: string[];
 }
@@ -34,6 +35,14 @@ function requireStringArray(value: unknown, path: string): string[] {
     throw new Error(`${path} must be an array`);
   }
   return value.map((item, index) => requireString(item, `${path}[${index}]`));
+}
+
+function requireMode(value: unknown, path: string): "read-only" | "mutate" | undefined {
+  if (value === undefined) return undefined;
+  if (value !== "read-only" && value !== "mutate") {
+    throw new Error(`${path} must be "read-only" or "mutate"`);
+  }
+  return value;
 }
 
 export function parseSkillEvalCase(value: unknown, source = "eval case"): SkillEvalCase {
@@ -67,6 +76,7 @@ export function parseSkillEvalCase(value: unknown, source = "eval case"): SkillE
         fixture: requireString(item.fixture, `${path}.fixture`),
         prompt: requireString(item.prompt, `${path}.prompt`),
         expectations: requireStringArray(item.expectations, `${path}.expectations`),
+        mode: requireMode(item.mode, `${path}.mode`),
         must_exist: item.must_exist
           ? requireStringArray(item.must_exist, `${path}.must_exist`)
           : undefined,
