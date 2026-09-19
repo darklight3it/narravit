@@ -1,0 +1,11 @@
+title: Narravit
+description: Human-first tools for AI-assisted TTRPG storytelling
+tagline: Human-first tools for AI-assisted TTRPG storytelling
+url: https://darklight3it.github.io
+baseurl: /narravit
+theme: jekyll-theme-midnight
+markdown: kramdown
+show_downloads: false
+
+exclude:
+  - _drafts
