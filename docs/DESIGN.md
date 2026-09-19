@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Narravit Design
+title: Narravit Design and Experience
 permalink: /design/
 ---
 
-# Narravit Design
+# Narravit Design and Experience
 
 Narravit is a collection of AI tools that helps tabletop role-playing game (TTRPG) Game Masters create **better experiences for their players with less effort**. The tools should be accessible to people **with limited technical knowledge**, requiring only access to an AI assistant that can work with files.
 
@@ -12,10 +12,9 @@ One of the challenges of Game Mastering is managing information spread across ma
 
 Narravit uses AI to read campaign material and produce documents and code that support the Game Master's workflow. Human storytelling, judgment, and relationships remain at the center of that workflow.
 
-## 🧭 Design Documents
+## 🧭 Related Documents
 
-- [Experience and capabilities]({{ '/experience/' | relative_url }}) describes how GMs should use Narravit and shows an aspirational workflow.
-- [First iteration]({{ '/v0-1/' | relative_url }}) defines the scope of session preparation in v0.1 and records the remaining open design question.
+- [First iteration]({{ '/v0-1/' | relative_url }}) defines the scope of session preparation in v0.1.
 
 ## Main Tenets
 
@@ -42,6 +41,55 @@ Narravit uses AI to read campaign material and produce documents and code that s
    Preparation includes both routine work and creative exploration, but the boundary between them is different for every GM. An activity that sparks ideas for one GM may feel tedious to another, leaving them with less energy for the creative work they enjoy. Even for the same GM, that balance can change from one session to the next. The parts of Game Mastering that feel fun are just as personal.
 
    Narravit should let GMs choose how deeply they want to engage with each activity: it may organize existing ideas, ask questions, suggest possible directions, or produce a complete draft. The GM decides where to explore and where to save time.
+
+## The Narravit Experience
+
+### General Experience and Installation
+
+Users can interact with Narravit through an AI assistant on their device, whether in a dedicated app, a command-line interface, or a text or document editor with AI support. The assistant must be able to **work with files**; the AI model itself may run **locally or remotely**.
+
+Users should be able to install Narravit's skills in a compatible AI assistant through a single terminal command or, where supported, the assistant's graphical installation interface.
+
+The choice of assistant supports Tenet 3, **No vendor lock-in**, and Tenet 4, **Respect GM agency and choice**.
+
+### Capabilities
+
+Each capability supports **one activity** a Game Master performs during session preparation. Capabilities should be **small and reusable**, so GMs can combine them into workflows that suit their needs.
+
+By default, each capability is delivered as one user-facing skill. A capability describes an activity the GM wants to accomplish; a skill describes the focused workflow that supports it. Skills should have clear inputs, outputs, assumptions, constraints, and exit conditions.
+
+Skills may compose into larger workflows. A primary skill may invoke supporting skills when their activities are related, but the primary purpose of each user-facing skill should remain clear. This makes it easy for developers to add, modify, or remove capabilities, and for GMs to **install only those they need**.
+
+Every capability reflects assumptions about how a GM prepares a game. Keeping capabilities optional and letting GMs choose how to combine them supports Tenet 4, **Respect GM agency and choice**. Where an activity involves creative exploration, the capability should offer **different levels of assistance** rather than assume that every GM wants a finished result (Tenet 5, **Respect each GM's creative process**).
+
+Examples of possible capabilities include:
+
+- Preparing a session document using a specific preparation method or tailored to a particular TTRPG rules system.
+- Organizing a campaign folder on the GM's device into a knowledge base the AI assistant can use to answer questions and suggest ideas. The knowledge base defines which sources take precedence when information conflicts.
+- Generating random tables for the GM to roll on during preparation or play.
+- Generating backgrounds for player characters, NPCs, and adversaries.
+- Formatting text provided by the GM into a prop document for players, following a reference layout or visual style supplied by the GM.
+- Preparing a coherent set of images to show players during a session, with a consistent visual style or format, by generating new images or editing existing ones. This capability requires access to image-generation or image-editing tools, depending on the task.
+- Creating battle maps for use in a virtual tabletop (VTT).
+- Creating a simple plugin for a specific VTT from the GM's description of the desired behavior, without requiring the GM to know how to program.
+
+## ✨ Aspirational Workflow
+
+A GM is working in their campaign's draft folder, using their preferred AI assistant (Tenet 3, **No vendor lock-in**). Their existing knowledge base is available to the assistant; if they use a remotely hosted model, they share only material they have the right to submit (Tenet 2, **Respect consent and authorship**). They invoke the session-preparation skill and describe their plan:
+
+> Next session, Fenrir the bounty hunter will finally catch up to the player characters.
+
+The GM chooses the direction of the story, and the assistant helps prepare it (Tenet 1, **Human storytelling comes first**).
+
+The assistant reads the campaign knowledge base. Fenrir is a dangerous cyborg hitman armed with a smart-ammo rifle and accompanied by three other cyborgs. Previously the GM established that Fenrir is secretly a clone of one of the player characters. The GM does not need to repeat these details: the assistant uses them to prepare a draft session document around the confrontation, including the secret the GM will need to keep in mind.
+
+The GM then invokes the PDF-production skill. They have found a reference layout they like and have permission to use it for this purpose (Tenet 2, **Respect consent and authorship**). They ask the assistant to use it for the session document. The assistant recreates the layout in CSS and produces a PDF from the draft. The GM chooses how the preparation is presented (Tenet 4, **Respect GM agency and choice**).
+
+The GM also wants a random weather table for the ambush, which will take place on Ghanki IV. They cannot remember what they decided about the planet's climate, so they ask the assistant to check. The assistant finds no climate established in the knowledge base and reports that gap, leaving the creative decision to the GM (Tenet 1, **Human storytelling comes first**, and Tenet 5, **Respect each GM's creative process**).
+
+The GM decides that Ghanki IV is a volcanic planet. The assistant suggests a weather table with a 10% chance of acid rain: a roll of 91–100 on a d100. The GM likes the complication this could bring to the ambush and accepts the suggestion (Tenet 4, **Respect GM agency and choice**).
+
+At the GM's request, the assistant saves the accepted climate details to the campaign knowledge base, adds the weather table to the session draft, and regenerates the PDF. The GM's decisions are now available for future preparation (Tenet 1, **Human storytelling comes first**), and the updated knowledge base and editable document remain in their campaign folder for use with other tools (Tenet 3, **No vendor lock-in**).
 
 ## ⚠️ What Narravit Must Not Become
 

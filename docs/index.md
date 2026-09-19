@@ -17,8 +17,7 @@ Narravit helps tabletop role-playing game (TTRPG) Game Masters bring campaign ma
 
 ## Explore Narravit
 
-- [Design and tenets]({{ '/design/' | relative_url }})
-- [Experience and capabilities]({{ '/experience/' | relative_url }})
+- [Design, experience, and capabilities]({{ '/design/' | relative_url }})
 - [First iteration: v0.1 session preparation]({{ '/v0-1/' | relative_url }})
 
 The first blog post is being prepared. It will explain the design and the decisions behind Narravit before the first skill is built and demonstrated.
