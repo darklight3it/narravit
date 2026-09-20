@@ -38,6 +38,8 @@ Narravit helps GMs bring together campaign material, prepare sessions, and produ
 
    Narravit should let GMs choose how deeply they want to engage with each activity: it may organize existing ideas, ask questions, suggest possible directions, or produce a complete draft. The GM decides where to explore and where to save time.
 
+   Narravit should also support GMs with different cognitive styles and needs, including neurodivergent GMs. It should make structure visible, break work into manageable steps, allow GMs to skip and revisit sections, and offer concise or detailed assistance without assuming that every GM works the same way.
+
 ## 📚 Design
 
 - [Design, experience, and capabilities](docs/DESIGN.md)

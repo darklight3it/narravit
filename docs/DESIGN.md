@@ -42,6 +42,8 @@ Narravit uses AI to read campaign material and produce documents and code that s
 
    Narravit should let GMs choose how deeply they want to engage with each activity: it may organize existing ideas, ask questions, suggest possible directions, or produce a complete draft. The GM decides where to explore and where to save time.
 
+   Narravit should also support GMs with different cognitive styles and needs, including neurodivergent GMs. Session preparation can be difficult when it involves scattered information, open-ended decisions, or keeping many details in working memory. Narravit should make structure visible, break work into manageable steps, allow GMs to skip and revisit sections, and offer concise or detailed assistance. These should remain options rather than assumptions about how any GM works.
+
 ## The Narravit Experience
 
 ### General Experience and Installation
@@ -64,7 +66,7 @@ Every capability reflects assumptions about how a GM prepares a game. Keeping ca
 
 Examples of possible capabilities include:
 
-- Preparing a session document using a specific preparation method or tailored to a particular TTRPG rules system.
+- Preparing a session document using a template chosen by the GM. The template's sections and comments define the preparation method and how each section should be filled; the skill guides the conversation and maintains the draft. Narravit includes an example adapted from Mike Shea's method, and GMs can supply their own templates.
 - Organizing a campaign folder on the GM's device into a knowledge base the AI assistant can use to answer questions and suggest ideas. The knowledge base defines which sources take precedence when information conflicts.
 - Generating random tables for the GM to roll on during preparation or play.
 - Generating backgrounds for player characters, NPCs, and adversaries.
