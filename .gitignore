@@ -43,5 +43,6 @@ htmlcov/
 coverage/
 *.log
 
+tasks
 # Keep skill instructions, references, assets, examples, and lockfiles tracked.
 # Do not broadly ignore .agents/, .codex/, or .claude/: they may contain skills.

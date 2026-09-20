@@ -40,6 +40,6 @@ Narravit helps GMs bring together campaign material, prepare sessions, and produ
 
 ## 📚 Design
 
-- [Design and tenets](docs/DESIGN.md)
-- [Experience and capabilities](docs/EXPERIENCE.md)
+- [Design, experience, and capabilities](docs/DESIGN.md)
 - [First iteration: v0.1 session preparation](docs/V0.1.md)
+- [Contributing](CONTRIBUTING.md)

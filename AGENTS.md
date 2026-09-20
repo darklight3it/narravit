@@ -14,22 +14,18 @@ storytelling. These instructions apply to AI assistants making changes in this r
 ## Documentation structure
 
 - [`README.md`](README.md) introduces the project and repeats the tenets for visitors.
-- [`docs/DESIGN.md`](docs/DESIGN.md) explains the project’s principles and boundaries.
-- [`docs/EXPERIENCE.md`](docs/EXPERIENCE.md) describes the intended GM experience and capabilities.
+- [`docs/DESIGN.md`](docs/DESIGN.md) describes the principles, intended GM experience, and capabilities.
 - [`docs/V0.1.md`](docs/V0.1.md) defines the first implementation scope.
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) describes the shared contribution and skill conventions.
 
-Keep implementation aligned with the capabilities documented in `docs/EXPERIENCE.md`. If a
+Keep implementation aligned with the capabilities documented in `docs/DESIGN.md`. If a
 capability changes, update that document in the same change.
 
-## Skills and workflows
+## Skill definition
 
-- A capability describes something a GM wants to accomplish.
-- A skill is a focused, reusable workflow that supports a capability.
-- A workflow may compose a primary skill with supporting skills.
-- Skills should have clear inputs, outputs, assumptions, constraints, and exit conditions.
-- A skill should not silently alter campaign facts, GM decisions, or another skill’s output.
-
-Prefer small, composable skills over one skill that tries to handle every possible workflow.
+Follow the capability and composition model in [`docs/DESIGN.md`](docs/DESIGN.md), the v0.1 skill
+definition in [`docs/V0.1.md`](docs/V0.1.md), and the contributor guidance in
+[`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Making changes
 
