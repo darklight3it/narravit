@@ -57,8 +57,7 @@ empty for later completion.
 
 The document should contain usable preparation material. Omit instructional comments, example
 placeholders, interview history, confidence labels, evidence, and rejected proposals unless the GM
-requests a working or audit version. Preserve attribution supplied by the active template,
-including attribution comments when required.
+requests a working or audit version. If you use the default template say that to the user and attribute correctly the method in the dialog.
 
 Updating the session draft does not authorize saving new facts to the campaign knowledge base.
 Do that only when the GM requests it. PDF production, images, battle maps, and VTT plugins are

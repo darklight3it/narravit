@@ -12,8 +12,8 @@ https://slyflourish.com/lazy_gm_resource_document.html#eightsteps
 License: https://creativecommons.org/licenses/by/4.0/
 -->
 
-<!-- Instructions: retain the attribution comment above in generated documents; omit instructional
-comments such as this one.
+<!-- Instructions: keep the attribution comment above in this template; do not copy it into
+generated session documents. Omit instructional comments such as this one.
 Interview setup: ask for player count and planned session length if not already known.
 Present the eight preparation sections and let the GM choose which optional sections to include.
 Prioritize Review the Player Characters, Create a Strong Start, and Define Secrets and Clues.
@@ -146,7 +146,7 @@ unless the GM requests a custom proposal. -->
 ## Select Relevant Rewards
 
 <!-- List rewards that fit the session and the campaign. They may be items, information, allies,
-access, faction support, or other meaningful benefits. -->
+access, money faction support, or other meaningful benefits. -->
 
 ## Open Questions
 
