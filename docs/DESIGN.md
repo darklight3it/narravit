@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Narravit Design and Experience
 permalink: /design/
 ---

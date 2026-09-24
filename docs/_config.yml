@@ -3,7 +3,7 @@ description: Human-first tools for AI-assisted TTRPG storytelling
 tagline: Human-first tools for AI-assisted TTRPG storytelling
 url: https://darklight3it.github.io
 baseurl: /narravit
-remote_theme: "jekyll/minima@4de3223"
+remote_theme: "LeNPaul/Millennial@gh-pages"
 markdown: kramdown
 show_downloads: false
 

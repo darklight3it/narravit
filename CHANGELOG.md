@@ -2,6 +2,12 @@
 
 All notable changes to Narravit are documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- The GitHub Pages site now uses the Millennial Jekyll theme and its page layout.
+
 ## [0.2.0] - 2026-09-25
 
 ### Added
@@ -25,3 +31,4 @@ All notable changes to Narravit are documented in this file.
 
 [0.1.0]: https://github.com/darklight3it/narravit/releases/tag/v0.1.0
 [0.2.0]: https://github.com/darklight3it/narravit/compare/v0.1.0...v0.2.0
+[Unreleased]: https://github.com/darklight3it/narravit/compare/v0.2.0...HEAD
