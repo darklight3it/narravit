@@ -4,7 +4,7 @@ description: Prepare an editable tabletop RPG session or Session Zero draft from
 license: MIT
 metadata:
   author: Davide Melfi
-  version: "0.1.0"
+  version: "0.2.0"
   repository: https://github.com/darklight3it/narravit
 ---
 

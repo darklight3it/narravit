@@ -2,7 +2,7 @@
 
 All notable changes to Narravit are documented in this file.
 
-## [Unreleased]
+## [0.2.0] - 2026-09-25
 
 ### Added
 
@@ -24,4 +24,4 @@ All notable changes to Narravit are documented in this file.
   `npx skills add darklight3it/narravit --skill session-preparation`.
 
 [0.1.0]: https://github.com/darklight3it/narravit/releases/tag/v0.1.0
-[Unreleased]: https://github.com/darklight3it/narravit/compare/v0.1.0...HEAD
+[0.2.0]: https://github.com/darklight3it/narravit/compare/v0.1.0...v0.2.0
