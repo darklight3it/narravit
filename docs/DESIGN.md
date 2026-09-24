@@ -66,7 +66,7 @@ Every capability reflects assumptions about how a GM prepares a game. Keeping ca
 
 Examples of possible capabilities include:
 
-- Preparing a session document using a template chosen by the GM. The template's sections and comments define the preparation method and how each section should be filled; the skill guides the conversation and maintains the draft. Narravit includes an example adapted from Mike Shea's method, and GMs can supply their own templates.
+- Preparing a session document using a template chosen by the GM. The template's sections and comments define the preparation method and how each section should be filled; the skill guides the conversation and maintains the draft. Narravit includes regular-session and Session Zero examples adapted from Mike Shea's methods, and GMs can supply their own templates. A Session Zero document acts as a flexible agenda before and during the meeting. It records confirmed shared agreements without preserving private disclosures or attributing personal boundaries to individual participants.
 - Organizing a campaign folder on the GM's device into a knowledge base the AI assistant can use to answer questions and suggest ideas. The knowledge base defines which sources take precedence when information conflicts.
 - Generating random tables for the GM to roll on during preparation or play.
 - Generating backgrounds for player characters, NPCs, and adversaries.

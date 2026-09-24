@@ -1,6 +1,6 @@
 ---
 name: session-preparation
-description: Prepare an editable tabletop RPG session draft from campaign notes and a chosen Markdown template. Use when a Game Master wants guided questions, grounded suggestions, or a complete preparation draft while retaining approval over every decision.
+description: Prepare an editable tabletop RPG session or Session Zero draft from campaign notes and a chosen Markdown template. Use when a Game Master wants a guided agenda, grounded suggestions, or a complete preparation draft while retaining approval over every decision.
 license: MIT
 metadata:
   author: Davide Melfi
@@ -16,11 +16,17 @@ Prepare a session using the GM's chosen template. The template defines the prepa
 sections, order, priorities, optional sections, content requirements, and presentation defaults.
 Its Markdown comments explain how to interview the GM and fill each section.
 
-Use the template explicitly selected by the GM, otherwise the project's designated template.
-If neither is supplied, use [Narravit's default example](references/lazy-gm-template.md), an
-adaptation of Mike Shea's preparation method. Read the entire active template, including comments,
-before starting. Follow its actual sections; do not impose the default template's method on a
-custom template. The GM may override template defaults.
+Use the template explicitly selected by the GM. If none is supplied, select the bundled template
+that matches the request:
+
+- For an explicit Session Zero request, use the
+  [Session Zero template](references/session-zero-template.md).
+- Otherwise, use [Narravit's regular-session example](references/lazy-gm-template.md), an
+  adaptation of Mike Shea's preparation method.
+
+Read the entire active template, including comments, before starting. Follow its actual sections;
+do not impose either bundled method on a custom template. The GM may override template defaults,
+including section order and which sections to use.
 
 ## Prepare the interview
 
@@ -33,6 +39,11 @@ custom template. The GM may override template defaults.
 5. Create the partial Markdown document using the template's structure, leaving unfinished
    sections visibly empty. Template placeholders and instruction comments are guidance, not
    session content.
+
+For Session Zero, prepare the initial document before the meeting when possible, then let the GM
+use it as the live agenda. During the meeting, add only decisions the group has confirmed. Record
+shared boundaries and procedures without identifying who requested them or preserving personal
+explanations. Do not record private disclosures.
 
 ## Work through the template
 
@@ -71,7 +82,7 @@ separate capabilities.
 ## Sources
 
 The reusable skill model follows [Addy Osmani's Agent Skills](https://addyosmani.com/blog/agent-skills/).
-The bundled default template adapts Mike Shea's *Return of the Lazy Dungeon Master* and the
-[Lazy GM's Resource Document](https://slyflourish.com/lazy_gm_resource_document.html#eightsteps);
-its method and attribution live in that template. Custom templates may use other preparation
-methods.
+The bundled regular-session and Session Zero templates adapt sections of the
+[Lazy GM's Resource Document](https://slyflourish.com/lazy_gm_resource_document.html); their
+method-specific guidance and attribution live in each template. Custom templates may use other
+preparation methods.

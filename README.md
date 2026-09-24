@@ -28,7 +28,9 @@ npx skills add . --skill session-preparation
 
 The skill follows the open Agent Skills format and can be used by Codex, Claude Code, Cursor,
 OpenCode, and other compatible agents. It reads the GM's campaign notes and chosen Markdown
-template, then maintains an editable session-preparation draft under the GM's direction.
+template, then maintains an editable preparation draft under the GM's direction. When the GM
+explicitly asks for Session Zero without choosing another template, the skill uses Narravit's
+bundled Session Zero agenda.
 
 ## 🧭 Main Tenets
 
