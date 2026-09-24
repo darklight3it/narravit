@@ -1,6 +1,11 @@
 ---
 name: session-preparation
-description: Help a Game Master prepare a session from campaign notes and a chosen Markdown template, guiding the interview through its section instructions and maintaining an editable draft.
+description: Prepare an editable tabletop RPG session draft from campaign notes and a chosen Markdown template. Use when a Game Master wants guided questions, grounded suggestions, or a complete preparation draft while retaining approval over every decision.
+license: MIT
+metadata:
+  author: Davide Melfi
+  version: "0.1.0"
+  repository: https://github.com/darklight3it/narravit
 ---
 
 # Session Preparation

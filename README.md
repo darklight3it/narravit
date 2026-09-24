@@ -12,6 +12,24 @@ Narravit is a collection of AI tools that helps tabletop role-playing game (TTRP
 
 Narravit helps GMs bring together campaign material, prepare sessions, and produce useful documents while keeping human judgment, taste, and authorship at the center of play.
 
+## Install the session-preparation skill
+
+Install the skill from GitHub with the open Agent Skills CLI:
+
+```bash
+npx skills add darklight3it/narravit --skill session-preparation
+```
+
+For local development from a clone of this repository:
+
+```bash
+npx skills add . --skill session-preparation
+```
+
+The skill follows the open Agent Skills format and can be used by Codex, Claude Code, Cursor,
+OpenCode, and other compatible agents. It reads the GM's campaign notes and chosen Markdown
+template, then maintains an editable session-preparation draft under the GM's direction.
+
 ## 🧭 Main Tenets
 
 1. **Human storytelling comes first**
@@ -45,3 +63,4 @@ Narravit helps GMs bring together campaign material, prepare sessions, and produ
 - [Design, experience, and capabilities](docs/DESIGN.md)
 - [First iteration: v0.1 session preparation](docs/V0.1.md)
 - [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
