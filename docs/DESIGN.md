@@ -4,8 +4,6 @@ title: Narravit Design and Experience
 permalink: /design/
 ---
 
-# Narravit Design and Experience
-
 Narravit is a collection of AI tools that helps tabletop role-playing game (TTRPG) Game Masters create **better experiences for their players with less effort**. The tools should be accessible to people **with limited technical knowledge**, requiring only access to an AI assistant that can work with files.
 
 One of the challenges of Game Mastering is managing information spread across many documents and putting it to use during play. Effective preparation helps Game Masters bring that information together and draw on it as the session unfolds.

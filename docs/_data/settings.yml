@@ -1,0 +1,23 @@
+disqus:
+  comments: false
+  disqus_shortname: ""
+
+google-ID: ""
+
+menu:
+  - name: Design
+    url: design
+  - name: Session Preparation
+    url: v0-1
+
+social:
+  - icon: github
+    link: https://github.com/darklight3it/narravit
+
+pagination:
+  next_page: Newer
+  previous_page: Older
+
+sharing_button_prompt: Share this page
+related_posts: You may also enjoy
+post_date_prefix: Published on
